@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
                   controller: controller,
                   count: 3,
                   effect: const ExpandingDotsEffect(
-                    dotHeight: 12,
-                    dotWidth: 12,
+                    dotHeight: 10,
+                    dotWidth: 10,
                     expansionFactor: 4,
                     dotColor: Colors.white,
                     activeDotColor: ColorsConst.blueIndicator,
