@@ -10,11 +10,45 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
-          child: BannerSlider(),
+          child: Column(
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  Container(
+                    height: 56,
+                    width: 56,
+                    decoration: ShapeDecoration(
+                      color: Colors.red,
+                      shadows: const [
+                        BoxShadow(
+                          color: Colors.red,
+                          blurRadius: 40,
+                          spreadRadius: -6,
+                          offset: Offset(0.0, 15),
+                        )
+                      ],
+                      shape: ContinuousRectangleBorder(
+                        borderRadius: BorderRadius.circular(40), //
+                      ),
+                    ),
+                  ),
+                  const Icon(
+                    Icons.mouse,
+                    color: Colors.white,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text('test'),
+            ],
+          ),
         ),
       ),
     );
