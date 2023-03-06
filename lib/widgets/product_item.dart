@@ -93,7 +93,7 @@ class ProductItem extends StatelessWidget {
                 BoxShadow(
                   color: ColorsConst.blue,
                   blurRadius: 25,
-                  spreadRadius: -12,
+                  spreadRadius: -16,
                   offset: Offset(0.0, 15),
                 ),
               ],

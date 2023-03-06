@@ -142,14 +142,14 @@ class MyApp extends StatelessWidget {
                       right: 44,
                     ),
                     child: SizedBox(
-                      height: 200,
+                      height: 232,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 10,
                         itemBuilder: (context, index) {
                           return const Padding(
                               padding: EdgeInsets.only(
-                                left: 20,
+                                left: 20,bottom: 32
                               ),
                               child: ProductItem());
                         },
@@ -163,7 +163,6 @@ class MyApp extends StatelessWidget {
                       left: 44,
                       right: 44,
                       bottom: 20,
-                      top: 32,
                     ),
                     child: Row(
                       children: const [
@@ -195,14 +194,14 @@ class MyApp extends StatelessWidget {
                       right: 44,
                     ),
                     child: SizedBox(
-                      height: 200,
+                      height: 232,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 10,
                         itemBuilder: (context, index) {
                           return const Padding(
                               padding: EdgeInsets.only(
-                                left: 20,
+                                left: 20,bottom: 32
                               ),
                               child: ProductItem());
                         },
