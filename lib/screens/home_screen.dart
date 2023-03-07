@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Image(
                           image:
-                          AssetImage('assets/images/icon_apple_blue.png'),
+                              AssetImage('assets/images/icon_apple_blue.png'),
                         ),
                         SizedBox(width: 15),
                       ],
@@ -124,8 +124,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(width: 10),
                       Image(
-                        image: AssetImage(
-                            'assets/images/icon_left_categroy.png'),
+                        image:
+                            AssetImage('assets/images/icon_left_categroy.png'),
                       ),
                     ],
                   ),
@@ -143,9 +143,7 @@ class HomeScreen extends StatelessWidget {
                       itemCount: 10,
                       itemBuilder: (context, index) {
                         return const Padding(
-                            padding: EdgeInsets.only(
-                                left: 20,bottom: 32
-                            ),
+                            padding: EdgeInsets.only(left: 20, bottom: 32),
                             child: ProductItem());
                       },
                     ),
@@ -176,8 +174,8 @@ class HomeScreen extends StatelessWidget {
                       ),
                       SizedBox(width: 10),
                       Image(
-                        image: AssetImage(
-                            'assets/images/icon_left_categroy.png'),
+                        image:
+                            AssetImage('assets/images/icon_left_categroy.png'),
                       ),
                     ],
                   ),
@@ -195,9 +193,7 @@ class HomeScreen extends StatelessWidget {
                       itemCount: 10,
                       itemBuilder: (context, index) {
                         return const Padding(
-                            padding: EdgeInsets.only(
-                                left: 20,bottom: 32
-                            ),
+                            padding: EdgeInsets.only(left: 20, bottom: 32),
                             child: ProductItem());
                       },
                     ),
