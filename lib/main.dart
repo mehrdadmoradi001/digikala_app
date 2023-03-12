@@ -17,55 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProductListScreen(),
-    );
-  }
-}
-
-class CategoryHorizontalItemList extends StatelessWidget {
-  const CategoryHorizontalItemList({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Stack(
-          alignment: AlignmentDirectional.center,
-          children: [
-            Container(
-              height: 56,
-              width: 56,
-              decoration: ShapeDecoration(
-                color: Colors.red,
-                shadows: const [
-                  BoxShadow(
-                    color: Colors.red,
-                    blurRadius: 25,
-                    spreadRadius: -12,
-                    offset: Offset(0.0, 15),
-                  )
-                ],
-                shape: ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.circular(40), //
-                ),
-              ),
-            ),
-            const Icon(
-              Icons.mouse,
-              color: Colors.white,
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Text(
-          'موس',
-          style: TextStyle(fontFamily: 'SB', fontSize: 12),
-        ),
-      ],
+      home: HomeScreen(),
     );
   }
 }
