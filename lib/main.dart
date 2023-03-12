@@ -12,9 +12,15 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+   int selectedBottomNavigationIndex = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,44 +28,122 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: ColorsConst.backgroundScreenColor,
         appBar: AppBar(),
-        body: const ProductListScreen(),
+        body:  IndexedStack(
+          index: selectedBottomNavigationIndex,
+          children: _getScreen(),
+        ),
         bottomNavigationBar: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
             child: BottomNavigationBar(
+              onTap: (int index) {
+                setState(() {
+                  selectedBottomNavigationIndex = index;
+                });
+              },
+              currentIndex: selectedBottomNavigationIndex,
               type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.transparent,
               elevation: 0,
+              selectedLabelStyle: const TextStyle(
+                  fontFamily: 'sb', fontSize: 10, color: ColorsConst.blue),
+              unselectedLabelStyle: const TextStyle(
+                  fontFamily: 'sb', fontSize: 10, color: Colors.black),
               items: [
                 BottomNavigationBarItem(
-                    icon: Container(
-                      child: Image.asset('assets/images/icon_home.png'),
-                      decoration: const BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: ColorsConst.blue,
-                            blurRadius: 20,
-                            spreadRadius: -7,
-                            offset: Offset(0.0, 10),
-                          )
-                        ],
+                    icon: Image.asset('assets/images/icon_home.png'),
+                    activeIcon: Padding(
+                      padding: const EdgeInsets.only(bottom: 3),
+                      child: Container(
+                        child: Image.asset(
+                            'assets/images/icon_home_active.png'),
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: ColorsConst.blue,
+                              blurRadius: 20,
+                              spreadRadius: -7,
+                              offset: Offset(0.0, 10),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                    label: 'home'),
+                    label: 'خانه'),
                 BottomNavigationBarItem(
                     icon: Image.asset('assets/images/icon_basket.png'),
-                    label: 'home'),
+                    activeIcon: Padding(
+                      padding: const EdgeInsets.only(bottom: 3),
+                      child: Container(
+                        child:
+                            Image.asset('assets/images/icon_basket_active.png'),
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: ColorsConst.blue,
+                              blurRadius: 20,
+                              spreadRadius: -7,
+                              offset: Offset(0.0, 10),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    label: 'سبد خرید'),
                 BottomNavigationBarItem(
                     icon: Image.asset('assets/images/icon_category.png'),
-                    label: 'home'),
+                    activeIcon: Padding(
+                      padding: const EdgeInsets.only(bottom: 3),
+                      child: Container(
+                        child: Image.asset(
+                            'assets/images/icon_category_active.png'),
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: ColorsConst.blue,
+                              blurRadius: 20,
+                              spreadRadius: -7,
+                              offset: Offset(0.0, 10),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    label: 'دسته بندی'),
                 BottomNavigationBarItem(
-                    icon: Image.asset('assets/images/icon_home.png'),
-                    label: 'home'),
+                    icon: Image.asset('assets/images/icon_profile.png'),
+                    activeIcon: Padding(
+                      padding: const EdgeInsets.only(bottom: 3),
+                      child: Container(
+                        child:
+                            Image.asset('assets/images/icon_profile_active.png'),
+                        decoration: const BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: ColorsConst.blue,
+                              blurRadius: 20,
+                              spreadRadius: -7,
+                              offset: Offset(0.0, 10),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    label: 'حساب کاربری'),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  List<Widget> _getScreen() {
+    return <Widget>[
+      const HomeScreen(),
+      const CategoryScreen(),
+      const ProductListScreen(),
+      const CategoryScreen(),
+    ];
   }
 }
