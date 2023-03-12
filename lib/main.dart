@@ -4,6 +4,7 @@ import 'package:digikala_app/constants/colors_constants.dart';
 import 'package:digikala_app/screens/category_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
 import 'package:digikala_app/screens/product_list_screen.dart';
+import 'package:digikala_app/screens/profile_screen.dart';
 import 'package:digikala_app/widgets/banner_slider.dart';
 import 'package:digikala_app/widgets/product_item.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,6 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: ColorsConst.backgroundScreenColor,
-        appBar: AppBar(),
         body:  IndexedStack(
           index: selectedBottomNavigationIndex,
           children: _getScreen(),
@@ -143,7 +143,7 @@ class _MyAppState extends State<MyApp> {
       const HomeScreen(),
       const CategoryScreen(),
       const ProductListScreen(),
-      const CategoryScreen(),
+      const ProfileScreen(),
     ];
   }
 }
