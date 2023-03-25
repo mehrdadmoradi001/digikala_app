@@ -404,6 +404,89 @@ class ProductDetailScreen extends StatelessWidget {
                                 fontSize: 12,
                                 color: Colors.black),
                           ),
+                          const SizedBox(width: 10),
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(left: 10),
+                                height: 26,
+                                width: 26,
+                                decoration: const BoxDecoration(
+                                  color: ColorsConst.red,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                right: 15,
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  height: 26,
+                                  width: 26,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.yellow,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                right: 30,
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  height: 26,
+                                  width: 26,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                right: 45,
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  height: 26,
+                                  width: 26,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                right: 60,
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  height: 26,
+                                  width: 26,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(8),
+                                    ),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      '10+',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: 'SB',
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           const Spacer(),
                           const Text(
                             'مشاهده',
