@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:digikala_app/constants/colors_constants.dart';
 import 'package:digikala_app/screens/category_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
+import 'package:digikala_app/screens/product_detail_screen.dart';
 import 'package:digikala_app/screens/product_list_screen.dart';
 import 'package:digikala_app/screens/profile_screen.dart';
 import 'package:digikala_app/widgets/banner_slider.dart';
@@ -21,18 +22,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-   int selectedBottomNavigationIndex = 0;
+  int selectedBottomNavigationIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: ColorsConst.backgroundScreenColor,
-        body:  IndexedStack(
-          index: selectedBottomNavigationIndex,
-          children: _getScreen(),
-        ),
-        bottomNavigationBar: ClipRRect(
+        body: ProductDetailScreen(),
+/*        bottomNavigationBar: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
             child: BottomNavigationBar(
@@ -55,8 +54,8 @@ class _MyAppState extends State<MyApp> {
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Container(
-                        child: Image.asset(
-                            'assets/images/icon_home_active.png'),
+                        child:
+                            Image.asset('assets/images/icon_home_active.png'),
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -115,8 +114,8 @@ class _MyAppState extends State<MyApp> {
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Container(
-                        child:
-                            Image.asset('assets/images/icon_profile_active.png'),
+                        child: Image.asset(
+                            'assets/images/icon_profile_active.png'),
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -133,7 +132,7 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ),
-        ),
+        ),*/
       ),
     );
   }
