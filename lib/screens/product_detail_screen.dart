@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:digikala_app/constants/colors_constants.dart';
 import 'package:flutter/material.dart';
 
@@ -503,10 +505,169 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20,
+                    right: 44,
+                    left: 44,
+                    bottom: 20,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      AddToBasketButton(),
+                      PriceTagButton(),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class AddToBasketButton extends StatelessWidget {
+  const AddToBasketButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: AlignmentDirectional.bottomCenter,
+      children: [
+        Container(
+          height: 60,
+          width: 120,
+          decoration: const BoxDecoration(
+            color: ColorsConst.blue,
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+        ),
+        ClipRRect(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(15),
+          ),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaY: 40, sigmaX: 40),
+            child: const SizedBox(
+              height: 53,
+              width: 140,
+              child: Center(
+                child: Text(
+                  'افزدون به سبد خرید',
+                  style: TextStyle(
+                    fontFamily: 'SB',
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class PriceTagButton extends StatelessWidget {
+  const PriceTagButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: AlignmentDirectional.bottomCenter,
+      children: [
+        Container(
+          height: 60,
+          width: 120,
+          decoration: const BoxDecoration(
+            color: ColorsConst.green,
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+        ),
+        ClipRRect(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(15),
+          ),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaY: 40, sigmaX: 40),
+            child: SizedBox(
+              height: 53,
+              width: 140,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 16,
+                      width: 25,
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          '%۳',
+                          style: TextStyle(
+                              fontFamily: 'sb',
+                              fontSize: 10,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: const [
+                        Text(
+                          '۴۶٬۰۰۰٬۰۰۰',
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            decorationThickness: 2,
+                            fontFamily: 'sm',
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          '۴۵٬۳۵۰٬۰۰۰',
+                          style: TextStyle(
+                            fontFamily: 'sm',
+                            fontSize: 14,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 5),
+                    const Text(
+                      'تومان',
+                      style: TextStyle(
+                        fontFamily: 'sm',
+                        fontSize: 12,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
