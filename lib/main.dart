@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:digikala_app/constants/colors_constants.dart';
-import 'package:digikala_app/screens/card_screen.dart';
+import 'package:digikala_app/screens/cart_screen.dart';
 import 'package:digikala_app/screens/category_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
 import 'package:digikala_app/screens/product_detail_screen.dart';
@@ -31,8 +31,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: ColorsConst.backgroundScreenColor,
-        body: CardScreen(),
-/*        bottomNavigationBar: ClipRRect(
+        body: IndexedStack(
+          index: selectedBottomNavigationIndex,
+          children: _getScreen(),
+        ),
+        bottomNavigationBar: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
             child: BottomNavigationBar(
@@ -55,8 +58,6 @@ class _MyAppState extends State<MyApp> {
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Container(
-                        child:
-                            Image.asset('assets/images/icon_home_active.png'),
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -67,6 +68,8 @@ class _MyAppState extends State<MyApp> {
                             )
                           ],
                         ),
+                        child:
+                            Image.asset('assets/images/icon_home_active.png'),
                       ),
                     ),
                     label: 'خانه'),
@@ -75,8 +78,6 @@ class _MyAppState extends State<MyApp> {
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Container(
-                        child:
-                            Image.asset('assets/images/icon_basket_active.png'),
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -87,6 +88,8 @@ class _MyAppState extends State<MyApp> {
                             )
                           ],
                         ),
+                        child:
+                            Image.asset('assets/images/icon_basket_active.png'),
                       ),
                     ),
                     label: 'سبد خرید'),
@@ -95,8 +98,6 @@ class _MyAppState extends State<MyApp> {
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Container(
-                        child: Image.asset(
-                            'assets/images/icon_category_active.png'),
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -107,6 +108,8 @@ class _MyAppState extends State<MyApp> {
                             )
                           ],
                         ),
+                        child: Image.asset(
+                            'assets/images/icon_category_active.png'),
                       ),
                     ),
                     label: 'دسته بندی'),
@@ -115,8 +118,6 @@ class _MyAppState extends State<MyApp> {
                     activeIcon: Padding(
                       padding: const EdgeInsets.only(bottom: 3),
                       child: Container(
-                        child: Image.asset(
-                            'assets/images/icon_profile_active.png'),
                         decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -127,13 +128,15 @@ class _MyAppState extends State<MyApp> {
                             )
                           ],
                         ),
+                        child: Image.asset(
+                            'assets/images/icon_profile_active.png'),
                       ),
                     ),
                     label: 'حساب کاربری'),
               ],
             ),
           ),
-        ),*/
+        ),
       ),
     );
   }
@@ -141,7 +144,7 @@ class _MyAppState extends State<MyApp> {
   List<Widget> _getScreen() {
     return <Widget>[
       const HomeScreen(),
-      const CategoryScreen(),
+      const CartScreen(),
       const ProductListScreen(),
       const ProfileScreen(),
     ];
