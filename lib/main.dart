@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:digikala_app/constants/colors_constants.dart';
+import 'package:digikala_app/screens/card_screen.dart';
 import 'package:digikala_app/screens/category_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
 import 'package:digikala_app/screens/product_detail_screen.dart';
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: ColorsConst.backgroundScreenColor,
-        body: ProductDetailScreen(),
+        body: CardScreen(),
 /*        bottomNavigationBar: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
