@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:digikala_app/constants/colors_constants.dart';
+import 'package:digikala_app/data/datasource/authentication_datasource.dart';
+import 'package:digikala_app/di/di.dart';
 import 'package:digikala_app/screens/cart_screen.dart';
 import 'package:digikala_app/screens/category_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
@@ -11,7 +13,8 @@ import 'package:digikala_app/widgets/banner_slider.dart';
 import 'package:digikala_app/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  await getItInit();
   runApp(const MyApp());
 }
 
@@ -31,10 +34,18 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: ColorsConst.backgroundScreenColor,
-        body: IndexedStack(
+        body: SafeArea(
+          child: Center(
+            child: ElevatedButton(onPressed: (){
+              var auth = AuthenticationRemote();
+              auth.register('mehrdadmoradi012345645454', '12345678', '12345678');
+
+            },child: Text('click to register'),),
+          ),
+        )/*IndexedStack(
           index: selectedBottomNavigationIndex,
           children: _getScreen(),
-        ),
+        )*/,
         bottomNavigationBar: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
@@ -65,7 +76,7 @@ class _MyAppState extends State<MyApp> {
                               blurRadius: 20,
                               spreadRadius: -7,
                               offset: Offset(0.0, 10),
-                            )
+                            ),
                           ],
                         ),
                         child:
@@ -105,7 +116,7 @@ class _MyAppState extends State<MyApp> {
                               blurRadius: 20,
                               spreadRadius: -7,
                               offset: Offset(0.0, 10),
-                            )
+                            ),
                           ],
                         ),
                         child: Image.asset(
@@ -125,7 +136,7 @@ class _MyAppState extends State<MyApp> {
                               blurRadius: 20,
                               spreadRadius: -7,
                               offset: Offset(0.0, 10),
-                            )
+                            ),
                           ],
                         ),
                         child: Image.asset(
