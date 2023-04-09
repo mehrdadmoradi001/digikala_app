@@ -1,16 +1,12 @@
 import 'dart:ui';
-
 import 'package:digikala_app/constants/colors_constants.dart';
 import 'package:digikala_app/data/datasource/authentication_datasource.dart';
+import 'package:digikala_app/data/repository/authentication_repository.dart';
 import 'package:digikala_app/di/di.dart';
 import 'package:digikala_app/screens/cart_screen.dart';
-import 'package:digikala_app/screens/category_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
-import 'package:digikala_app/screens/product_detail_screen.dart';
 import 'package:digikala_app/screens/product_list_screen.dart';
 import 'package:digikala_app/screens/profile_screen.dart';
-import 'package:digikala_app/widgets/banner_slider.dart';
-import 'package:digikala_app/widgets/product_item.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -36,16 +32,23 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: ColorsConst.backgroundScreenColor,
         body: SafeArea(
           child: Center(
-            child: ElevatedButton(onPressed: (){
-              var auth = AuthenticationRemote();
-              auth.register('mehrdadmoradi012345645454', '12345678', '12345678');
-
-            },child: Text('click to register'),),
+            child: ElevatedButton(
+              onPressed: () async {
+                // var either = await AuthenticationRepository().register();
+                // either.fold((errorMessage) {
+                //   print(errorMessage);
+                // }, (successMessage) {
+                //   print(successMessage);
+                // });
+              },
+              child: Text('click to register'),
+            ),
           ),
-        )/*IndexedStack(
+        ) /*IndexedStack(
           index: selectedBottomNavigationIndex,
           children: _getScreen(),
-        )*/,
+        )*/
+        ,
         bottomNavigationBar: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
