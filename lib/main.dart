@@ -8,8 +8,10 @@ import 'package:digikala_app/screens/home_screen.dart';
 import 'package:digikala_app/screens/product_list_screen.dart';
 import 'package:digikala_app/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await getItInit();
   runApp(const MyApp());
 }
@@ -34,12 +36,15 @@ class _MyAppState extends State<MyApp> {
           child: Center(
             child: ElevatedButton(
               onPressed: () async {
-                var either = await AuthenticationRepository().login('mehrdadmoradi01234533', '12345678');
-                either.fold((errorMessage) {
-                  print(errorMessage);
-                }, (successMessage) {
-                  print(successMessage);
-                });
+                var either = await AuthenticationRepository().
+                login('mehrdadmoradi012345', '12345678');
+                var sharePre = locator.get<SharedPreferences>();
+                print(sharePre.getString('access_token'));
+                // either.fold((errorMessage) {
+                //   print(errorMessage);
+                // }, (successMessage) {
+                //   print(successMessage);
+                // });
               },
               child: Text('click to register'),
             ),
