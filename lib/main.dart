@@ -34,12 +34,12 @@ class _MyAppState extends State<MyApp> {
           child: Center(
             child: ElevatedButton(
               onPressed: () async {
-                // var either = await AuthenticationRepository().register();
-                // either.fold((errorMessage) {
-                //   print(errorMessage);
-                // }, (successMessage) {
-                //   print(successMessage);
-                // });
+                var either = await AuthenticationRepository().login('mehrdadmoradi01234533', '12345678');
+                either.fold((errorMessage) {
+                  print(errorMessage);
+                }, (successMessage) {
+                  print(successMessage);
+                });
               },
               child: Text('click to register'),
             ),

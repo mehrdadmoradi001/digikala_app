@@ -9,6 +9,8 @@ abstract class IAuthRepository {
     String password,
     String passwordConfirm,
   );
+
+  Future<Either<String,String>> login(String username, String password);
 }
 
 class AuthenticationRepository extends IAuthRepository {
@@ -24,4 +26,20 @@ class AuthenticationRepository extends IAuthRepository {
       return Left(ex.message ?? 'خطا محتوای متنی ندارد ');
     }
   }
+
+  @override
+  Future<Either<String, String>> login(String username, String password) async{
+    try{
+      String token = await _dataSource.login(username, password);
+      if(token.isNotEmpty){
+        return Right('شما وارد شدید');
+      }else{
+        return Left('خطایی پیش آمده است');
+      }
+    } on ApiException catch (ex){
+      return Left('${ex.message}');
+    }
+  }
+
+
 }
