@@ -7,6 +7,7 @@ import 'package:digikala_app/screens/cart_screen.dart';
 import 'package:digikala_app/screens/home_screen.dart';
 import 'package:digikala_app/screens/product_list_screen.dart';
 import 'package:digikala_app/screens/profile_screen.dart';
+import 'package:digikala_app/util/auth_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,19 +35,32 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: ColorsConst.backgroundScreenColor,
         body: SafeArea(
           child: Center(
-            child: ElevatedButton(
-              onPressed: () async {
-                var either = await AuthenticationRepository().
-                login('mehrdadmoradi012345', '12345678');
-                var sharePre = locator.get<SharedPreferences>();
-                print(sharePre.getString('access_token'));
-                // either.fold((errorMessage) {
-                //   print(errorMessage);
-                // }, (successMessage) {
-                //   print(successMessage);
-                // });
-              },
-              child: Text('click to register'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    var either = await AuthenticationRepository()
+                        .login('mehrdadmoradi012345', '12345678');
+                  },
+                  child: Text('LogIn'),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    AuthManager.logOut();
+                  },
+                  child: Text('LogOut'),
+                ),
+                ValueListenableBuilder(
+                  valueListenable: AuthManager.authChangeNotifier,
+                  builder: (context, value, child) {
+                      if(value == null || value.isEmpty){
+                        return Text('شما وارد نشده اید',style: TextStyle(fontSize: 20),);
+                      }else{
+                        return Text('شما وارد شده اید',style: TextStyle(fontSize: 20),);
+                      }
+                    },),
+              ],
             ),
           ),
         ) /*IndexedStack(

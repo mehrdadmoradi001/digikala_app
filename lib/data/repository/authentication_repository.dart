@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:digikala_app/data/datasource/authentication_datasource.dart';
 import 'package:digikala_app/di/di.dart';
 import 'package:digikala_app/util/api_exception.dart';
+import 'package:digikala_app/util/auth_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class IAuthRepository {
@@ -34,7 +35,7 @@ class AuthenticationRepository extends IAuthRepository {
     try{
       String token = await _dataSource.login(username, password);
       if(token.isNotEmpty){
-        _sharedPreferences.setString('access_token', token);
+        AuthManager.saveToken(token);
         return Right('شما وارد شدید');
       }else{
         return Left('خطایی پیش آمده است');
